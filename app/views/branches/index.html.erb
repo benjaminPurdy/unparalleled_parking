@@ -1,0 +1,67 @@
+<h1>Listing branches</h1>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+function destroy(id) {
+   if (this.parentElement) {
+     deletedNode = this.parentElement;
+   } else {
+     deletedNode = document.getElementById(id);
+   }
+   
+   $.ajax({
+       url: "/branches/" + deletedNode.id,
+       type: 'DELETE',
+       dataType: JSON,
+       complete: function(data) {
+	   deletedNode.remove();
+       }
+   });
+}
+
+function a(id) {
+  parent = document.getElementById(id);
+    if (parent.getAttribute('class') === "retracted") {
+    $.ajax({
+      url: "/branches/parent/" + id,
+      dataType: JSON,
+      complete: function(data) {
+          data = data.responseText;
+          data = JSON.parse(data);
+          if (data.length > 0) {
+              var ul = document.createElement("ul");
+              parent.appendChild(ul);
+              for(var i=0;i<data.length;i++){
+                  var child = data[i];
+                  li = document.createElement("li");
+                  li.id = child.id;
+          	li.appendChild(document.createTextNode("Name: " + child.uid + " Range: " + child.range + " Value: " + child.text + "    "));
+                  deleteButton = document.createElement('button');
+                  deleteButton.onclick = destroy;
+                  deleteButton.innerHTML = "Delete";
+		  li.appendChild(deleteButton);
+                  ul.appendChild(li);
+              }
+          parent.className = "expanded";
+          }
+      }
+    });
+  } else {
+    parent.className = "retracted";
+    $("#" + id + " ul").remove();
+  }
+}
+</script>
+
+<table>
+  <ul id="branches">
+    <% @branches.each do |branch| %>
+      <li id="<%=branch.id %>" class="retracted" oncontextmenu="alert('success');" onclick='a(<%=branch.id%>)'> Name: <%= branch.uid %> Range: <%= branch.range %> Value: <%= branch.text %>    <button onclick='destroy(<%=branch.id%>)'>Delete</button></li>
+    <% end %>
+  </ul>
+  </tbody>
+</table>
+<br>
+
+<h1>New branch</h1>
+
+<%= render 'form' %>

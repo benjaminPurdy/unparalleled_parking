@@ -1,0 +1,52 @@
+<script>
+function validateForm() {
+    form = document.getElementById("new_branch");
+    var title = form.branch_uid.value;
+    var startingRange = form.branch_text.value;
+    var endingRange = form.branch_range.value;
+    var errors = false;
+    
+    if (title=="" || startingRange=="" || endingRange=="") {
+        errorSpan = document.createElement("span");   
+        errorSpan.innerHTML = "Please fill out all required fields";
+        document.getElementById("errors").appendChild(errorSpan);
+        br = document.createElement("br");   
+        document.getElementById("errors").appendChild(br);
+	errors = true;
+    }
+    if (parseInt(startingRange) > parseInt(endingRange)) {
+        errorSpan = document.createElement("span");   
+        errorSpan.innerHTML = "Invalid range"
+        document.getElementById("errors").appendChild(errorSpan);
+        br = document.createElement("br");   
+        document.getElementById("errors").appendChild(br);
+	errors = true;
+    }
+  
+    return !errors;
+}
+</script>
+<div id="errors" class="errors">
+</div>
+<form accept-charset="UTF-8" onSubmit="return validateForm()" action="/branches" class="new_branch" id="new_branch" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="2U6plsjkxu4CATEq48gttrM3mkFg6RqqCl2rdqSA+qw="></div>
+
+  <div class="field">
+    Title*<br>
+    <input id="branch_uid" name="branch[uid]" type="text">
+  </div>
+  <div class="field">
+    Name parent folder (leave blank if no parent) <br>
+    <input id="branch_parent" name="branch[parent]" type="text">
+  </div>
+  <div class="field">
+    Starting Range (Must be number)*<br>
+    <input id="branch_text" name="branch[text]" pattern="^[0-9]*$" require="true" type="text">
+  </div>
+  <div class="field">
+    Ending Range (Must be number)*<br>
+    <input id="branch_range" name="branch[range]" pattern="^[0-9]*$" require="true" type="text">
+  </div>
+  <div class="actions">
+    <input name="commit" type="submit" value="Create Branch">
+  </div>
+</form>
