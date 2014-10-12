@@ -1,28 +1,7 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+So desided to setup a new Amazon EC2 elastic server in the cloud and install LAMP setup on it. Then got Ruby on Rails up and running using a lightweight splite3 database in the background to write a custom folder system using ajax calls for most of it, but not using ajax for creating a new folder (just got lazy at that point in time). Think this is probably more than you were asking for but if not cool. Naturally i rushed through this so I'm guessing that i missed some small bugs and it really bothers me that I havent written unit tests for this =/. Just kinda plowed through it instead. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
+Hope you enjoy,
+Ben
 <tt>rake doc:app</tt>.
