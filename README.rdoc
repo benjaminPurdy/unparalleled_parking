@@ -2,6 +2,14 @@
 
 So desided to setup a new Amazon EC2 elastic server in the cloud and install LAMP setup on it. Then got Ruby on Rails up and running using a lightweight splite3 database in the background to write a custom folder system using ajax calls for most of it, but not using ajax for creating a new folder (just got lazy at that point in time). Think this is probably more than you were asking for but if not cool. Naturally i rushed through this so I'm guessing that i missed some small bugs and it really bothers me that I havent written unit tests for this =/. Just kinda plowed through it instead. 
 
+
+Items i would have liked to do:
+   Create a dev through prod specific yamall file for database configurations
+   Installed bootstrap and configured the UI
+   More thuroly test behavior if multiple users are on it.
+   Add Tests
+   Clean up code (curently the database row names and what im using them for dont make the most sense), also not utilizing helper methods as I should
+ 
 Hope you enjoy,
 Ben
 <tt>rake doc:app</tt>.
