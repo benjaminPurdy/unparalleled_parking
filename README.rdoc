@@ -9,6 +9,7 @@ Items i would have liked to do:
    More thuroly test behavior if multiple users are on it.
    Add Tests
    Clean up code (curently the database row names and what im using them for dont make the most sense), also not utilizing helper methods as I should
+   Create a contextMenu handler to handle right clicks on tree items
  
 Hope you enjoy,
 Ben
